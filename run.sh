@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ ! -f .env ]; then
+    echo "No .env file exists."
+    exit 1
+fi
+
 echo "source .env"
 . .env
 
