@@ -39,7 +39,7 @@ async function connect() {
   return client;
 }
 
-async function runQuery(q: string) {
+export async function runQuery(q: string) {
   const client = await connect();
 
   try {
@@ -64,9 +64,4 @@ export async function getNumber() {
   await client.end();
 
   return result.rows[0][0];
-}
-
-export async function insertUser() {
-  await runQuery("INSERT INTO public.  user(id, username, email, password, firstname, lastname, signup_method)" +
-  "VALUES(2, 'hello_user2', 'hello2@email.com', 'secret', 'Hello', 'World', 'test')")
 }

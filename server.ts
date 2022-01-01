@@ -1,5 +1,5 @@
-import { insertUser } from "./db.ts";
 import { Application, isHttpError, Status } from './deps.ts'
+import user from "./routes/user.ts";
 
 function errorHandler(app: Application<Record<string, any>>) {
   app.use(async (ctx, next) => {
@@ -32,8 +32,9 @@ async function server() {
 
   errorHandler(app);
 
-  app.use(async (ctx) => {
-    await insertUser();
+  app.use(user.routes());
+
+  app.use((ctx) => {
     ctx.response.body = "Hello World!";
   });
 
