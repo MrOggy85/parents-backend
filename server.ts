@@ -1,4 +1,4 @@
-import { Application, isHttpError, Status } from './deps.ts'
+import { Application, isHttpError, oakCors, Status } from './deps.ts'
 import user from "./routes/user.ts";
 
 function errorHandler(app: Application<Record<string, any>>) {
@@ -29,6 +29,12 @@ function errorHandler(app: Application<Record<string, any>>) {
 
 async function server() {
   const app = new Application();
+
+  app.use(
+    oakCors({
+      origin: "http://localhost:3000"
+    }),
+  );
 
   errorHandler(app);
 
