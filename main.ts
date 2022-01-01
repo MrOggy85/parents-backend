@@ -1,6 +1,10 @@
-import { insertUser } from "./db.ts";
+// import { insertUser } from "./db.ts";
+
+import server from "./server.ts";
 
 // const number = await getNumber();
-await insertUser();
+// await insertUser();
 
-console.log("done");
+// console.log("done");
+
+await server()

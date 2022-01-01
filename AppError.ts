@@ -1,7 +1,7 @@
-class AppError extends Error {
-  status: number
+import { HttpError, Status } from "./deps.ts";
 
-  constructor(message: string, status: number) {
+class AppError extends HttpError {
+  constructor(message: string, status: Status) {
     super();
 
     this.message = message;

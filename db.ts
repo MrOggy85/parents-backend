@@ -1,5 +1,5 @@
 import AppError from "./AppError.ts";
-import { Client, PostgresError } from "./deps.ts";
+import { Client, PostgresError, Status } from "./deps.ts";
 
 const DB_USER = Deno.env.get("DB_USER");
 if (!DB_USER) {
@@ -48,7 +48,7 @@ async function runQuery(q: string) {
   } catch (error) {
     if (error instanceof PostgresError ) {
       console.error('PostgresError 2', error.name, error.message, error.fields, error.stack);
-      throw new AppError('', 500)
+      throw new AppError('', Status.InternalServerError)
     }
 
   }
